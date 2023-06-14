@@ -6,13 +6,14 @@ import { ContactList } from './ContactList/ContactList';
 import { TelephoneBook, Title } from './App.styled';
 
 export function App() {
+  const allContacts = 'contacts';
   const [contacts, setContacts] = useState(
-    () => JSON.parse(localStorage.getItem('contacts')) ?? []
+    () => JSON.parse(localStorage.getItem(allContacts)) ?? []
   );
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
+    localStorage.setItem(allContacts, JSON.stringify(contacts));
   }, [contacts]);
 
   const addContact = (name, number) => {
